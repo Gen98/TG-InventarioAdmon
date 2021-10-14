@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'InventarioAdmon';
+  title = 'Inventario';
+  url: string = '';
+
+  constructor( private location: Location ) {
+    location.onUrlChange(val => {
+      this.url = val;
+    });
+  }
 }

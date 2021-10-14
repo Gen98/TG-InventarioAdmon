@@ -1,0 +1,45 @@
+<div *ngIf="movil()" id="sidebarcontainer" (click)="showBar()" class="sidebarcontainer">
+</div>
+<nav class="main-menu" id="mySidebar">
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li 
+            (click)="ruta ( '' )"
+            [ngClass]="{'bg-white text-secondary':url == ''}"
+            routerLinkActive="bg-white text-secondary"
+            [routerLinkActiveOptions]="{ exact:true }"
+            class="nav-item my-2">
+            <i class="fas fa-home fa-2x"></i>
+            <span class="nav-text"> Inicio </span>
+        </li>
+        <li (click)="ruta ( 'inventario')" *ngIf="!movil()"
+            [ngClass]="{'bg-white text-secondary':url == '/inventario'}"
+            class="nav-item">
+            <i class="fa fa-laptop-medical fa-2x"></i>
+            <span class="nav-text"> Realizar Inventario </span>
+        </li>
+        <li (click)="ruta ( 'catalogo' )" *ngIf="!movil()"
+            [ngClass]="{'bg-white text-secondary':url == '/catalogo'}"
+            class="nav-item">
+            <i class="fa fa-notes-medical fa-2x"></i>
+            <span class="nav-text"> Catálogo de Productos </span>
+        </li>
+        <hr *ngIf="!movil()">
+        <div class="text-center my-2 text-white">
+            <span class="nav-text"> Almacén </span>
+        </div>
+        <li (click)="ruta ( 'xRecibir' )"
+            *ngIf="isConnected"
+            [ngClass]="{'bg-white text-secondary': url == '/xRecibir'}"
+            class="nav-item">
+            <i class="fa fa-truck-loading fa-2x"></i>
+            <span class="nav-text"> Material x Recibir </span>
+        </li>
+        <li (click)="ruta ( 'almacenes' )"
+            [ngClass]="{'bg-white text-secondary':url == '/almacenes'}"
+            class="nav-item">
+            <i class="fa fa-warehouse fa-2x"></i>
+            <span class="nav-text"> Catálogo de Almacenes </span>
+        </li>
+    </ul>
+</nav>
+<app-navbar (showBar)="showBar()"></app-navbar>
